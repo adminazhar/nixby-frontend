@@ -22,13 +22,6 @@ const navigation = (): VerticalNavItemsType => [
     title: 'Finance',
     icon: Finance,
     path: '/second-page'
-  },
-  {
-    title: 'Access Control',
-    icon: ShieldOutline,
-    path: '/acl',
-    action: 'read',
-    subject: 'acl-page'
   }
 ]
 

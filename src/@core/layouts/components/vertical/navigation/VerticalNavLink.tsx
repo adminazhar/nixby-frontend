@@ -24,7 +24,6 @@ import { Settings } from 'src/@core/context/settingsContext'
 // ** Custom Components Imports
 import UserIcon from 'src/layouts/components/UserIcon'
 import Translations from 'src/layouts/components/Translations'
-import CanViewNavLink from 'src/layouts/components/acl/CanViewNavLink'
 
 // ** Utils
 import { handleURLQueries } from 'src/@core/layouts/utils'
@@ -131,87 +130,85 @@ const VerticalNavLink = ({
   }
 
   return (
-    <CanViewNavLink navLink={item}>
-      <ListItem
-        disablePadding
-        className='nav-link'
-        disabled={item.disabled || false}
-        sx={{
-          mt: 1.5,
-          transition: 'padding .25s ease-in-out',
-          px: parent ? '0 !important' : `${theme.spacing(navCollapsed && !navHover ? 2 : 3)} !important`
-        }}
-      >
-        <Link passHref href={item.path === undefined ? '/' : `${item.path}`}>
-          <MenuNavLink
-            component={'a'}
-            className={isNavLinkActive() ? 'active' : ''}
-            {...(item.openInNewTab ? { target: '_blank' } : null)}
-            onClick={e => {
-              if (item.path === undefined) {
-                e.preventDefault()
-                e.stopPropagation()
-              }
-              if (navVisible) {
-                toggleNavVisibility()
-              }
-            }}
-            sx={{
-              py: 2.25,
-              ...conditionalBgColor(),
-              ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
-              pr: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 3,
-              pl: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 4
-            }}
-          >
-            {isSubToSub ? null : (
-              <ListItemIcon
-                sx={{
-                  ...conditionalIconColor(),
-                  transition: 'margin .25s ease-in-out',
-                  ...(navCollapsed && !navHover ? { mr: 0 } : { mr: 2 }),
-                  ...(parent ? { ml: 2, mr: 4 } : {}) // This line should be after (navCollapsed && !navHover) condition for proper styling
-                }}
-              >
-                <UserIcon
-                  icon={IconTag}
-                  componentType='vertical-menu'
-                  iconProps={{
-                    sx: {
-                      ...(!parent ? { fontSize: '1.5rem' } : { fontSize: '0.5rem' }),
-                      ...(parent && item.icon ? { fontSize: '0.875rem' } : {})
-                    }
-                  }}
-                />
-              </ListItemIcon>
-            )}
-
-            <MenuItemTextMetaWrapper
+    <ListItem
+      disablePadding
+      className='nav-link'
+      disabled={item.disabled || false}
+      sx={{
+        mt: 1.5,
+        transition: 'padding .25s ease-in-out',
+        px: parent ? '0 !important' : `${theme.spacing(navCollapsed && !navHover ? 2 : 3)} !important`
+      }}
+    >
+      <Link passHref href={item.path === undefined ? '/' : `${item.path}`}>
+        <MenuNavLink
+          component={'a'}
+          className={isNavLinkActive() ? 'active' : ''}
+          {...(item.openInNewTab ? { target: '_blank' } : null)}
+          onClick={e => {
+            if (item.path === undefined) {
+              e.preventDefault()
+              e.stopPropagation()
+            }
+            if (navVisible) {
+              toggleNavVisibility()
+            }
+          }}
+          sx={{
+            py: 2.25,
+            ...conditionalBgColor(),
+            ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
+            pr: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 3,
+            pl: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 4
+          }}
+        >
+          {isSubToSub ? null : (
+            <ListItemIcon
               sx={{
-                ...(isSubToSub ? { ml: 8 } : {}),
-                ...(navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 })
+                ...conditionalIconColor(),
+                transition: 'margin .25s ease-in-out',
+                ...(navCollapsed && !navHover ? { mr: 0 } : { mr: 2 }),
+                ...(parent ? { ml: 2, mr: 4 } : {}) // This line should be after (navCollapsed && !navHover) condition for proper styling
               }}
             >
-              <Typography
-                {...((themeConfig.menuTextTruncate || (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
-                  noWrap: true
-                })}
-              >
-                <Translations text={item.title} />
-              </Typography>
-              {item.badgeContent ? (
-                <Chip
-                  size='small'
-                  label={item.badgeContent}
-                  color={item.badgeColor || 'primary'}
-                  sx={{ ml: 1.5, '& .MuiChip-label': { px: 2.5, lineHeight: 1.385, textTransform: 'capitalize' } }}
-                />
-              ) : null}
-            </MenuItemTextMetaWrapper>
-          </MenuNavLink>
-        </Link>
-      </ListItem>
-    </CanViewNavLink>
+              <UserIcon
+                icon={IconTag}
+                componentType='vertical-menu'
+                iconProps={{
+                  sx: {
+                    ...(!parent ? { fontSize: '1.5rem' } : { fontSize: '0.5rem' }),
+                    ...(parent && item.icon ? { fontSize: '0.875rem' } : {})
+                  }
+                }}
+              />
+            </ListItemIcon>
+          )}
+
+          <MenuItemTextMetaWrapper
+            sx={{
+              ...(isSubToSub ? { ml: 8 } : {}),
+              ...(navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 })
+            }}
+          >
+            <Typography
+              {...((themeConfig.menuTextTruncate || (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
+                noWrap: true
+              })}
+            >
+              <Translations text={item.title} />
+            </Typography>
+            {item.badgeContent ? (
+              <Chip
+                size='small'
+                label={item.badgeContent}
+                color={item.badgeColor || 'primary'}
+                sx={{ ml: 1.5, '& .MuiChip-label': { px: 2.5, lineHeight: 1.385, textTransform: 'capitalize' } }}
+              />
+            ) : null}
+          </MenuItemTextMetaWrapper>
+        </MenuNavLink>
+      </Link>
+    </ListItem>
   )
 }
 
