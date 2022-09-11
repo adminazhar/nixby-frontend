@@ -17,22 +17,19 @@ const FooterContent = () => {
           ❤️
         </Box>
         {` by `}
-        <Link target='_blank' href='https://pixinvent.com/'>
+        <Link target='_blank' href='https://azhark.com/'>
           Azhar Khan
         </Link>
       </Typography>
       {hidden ? null : (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', '& :not(:last-child)': { mr: 4 } }}>
-          <Link target='_blank' href='https://themeforest.net/licenses/standard'>
+          <Link target='_blank' href='#'>
             About
           </Link>
-          <Link
-            target='_blank'
-            href='https://pixinvent.com/demo/materialize-mui-react-nextjs-admin-template/documentation'
-          >
+          <Link target='_blank' href='#'>
             Contact
           </Link>
-          <Link target='_blank' href='https://pixinvent.ticksy.com/'>
+          <Link target='_blank' href='#'>
             Support
           </Link>
         </Box>

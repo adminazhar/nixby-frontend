@@ -8,9 +8,6 @@ import { Direction } from '@mui/material'
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 
-// ** RTL Plugin
-import stylisRTLPlugin from 'stylis-plugin-rtl'
-
 interface DirectionProps {
   children: ReactNode
   direction: Direction
@@ -19,8 +16,7 @@ interface DirectionProps {
 const styleCache = () =>
   createCache({
     key: 'rtl',
-    prepend: true,
-    stylisPlugins: [stylisRTLPlugin]
+    prepend: true
   })
 
 const Direction = (props: DirectionProps) => {
