@@ -1,7 +1,6 @@
 // ** Icon imports
 import HomeOutline from 'mdi-material-ui/HomeOutline'
 import Finance from 'mdi-material-ui/Finance'
-import ShieldOutline from 'mdi-material-ui/ShieldOutline'
 import Cellphone from 'mdi-material-ui/Cellphone'
 
 // ** Type import

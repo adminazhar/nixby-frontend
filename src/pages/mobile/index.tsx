@@ -1,6 +1,6 @@
 // ** React Imports
 import { ReactElement } from 'react'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 // ** MUI Imports
 import Card from '@mui/material/Card'
@@ -126,24 +126,6 @@ const rows = [
 ]
 
 const Mobile = () => {
-  // Fetch Mobile Details
-  const [mobileDetailsFetch, setMobileDetails] = useState(null)
-  useEffect(() => {
-    getMobileDetails()
-  }, [])
-  const getMobileDetails = () => {
-    fetch('https://admin.nixby.in/MobileMaster/MobileFetch.php?fetchmobile=Samsung%20Galaxy%20S22')
-      .then(res => res.json())
-      .then(
-        result => {
-          setMobileDetails(result)
-        },
-        error => {
-          setMobileDetails(null)
-        }
-      )
-  }
-
   return (
     <>
       <Grid container spacing={6}>
@@ -175,7 +157,6 @@ const Mobile = () => {
                       <CardContent>
                         {/* Override below with H1 for SEO */}
                         <Typography variant='h5' sx={{ fontWeight: 600, mb: 1.1 }}>
-                          {/* {JSON.stringify(mobileDetailsFetch)} {mobileDetailsFetch[modelname]} */}
                           Samsung Galaxy S22
                         </Typography>
                         <Grid container spacing={6}>

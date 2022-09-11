@@ -51,8 +51,7 @@ const AnalyticsTotalRevenue = () => {
     plotOptions: {
       bar: {
         borderRadius: 5,
-        columnWidth: '48%',
-        startingShape: 'rounded'
+        columnWidth: '48%'
       }
     },
     states: {

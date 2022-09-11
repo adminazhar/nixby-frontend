@@ -76,39 +76,37 @@ const VerticalNavSectionTitle = (props: Props) => {
   }
 
   return (
-    <CanViewNavSectionTitle navTitle={item}>
-      <ListSubheader
-        className='nav-section-title'
+    <ListSubheader
+      className='nav-section-title'
+      sx={{
+        ...(navCollapsed && !navHover
+          ? { py: 4.75, px: (collapsedNavWidth - navigationBorderWidth - 22) / 8 }
+          : { pl: 0 })
+      }}
+    >
+      <Divider
+        textAlign='left'
         sx={{
+          m: 0,
+          lineHeight: 'normal',
+          ...conditionalBorderColor(),
+          '&:after': { display: 'none' },
           ...(navCollapsed && !navHover
-            ? { py: 4.75, px: (collapsedNavWidth - navigationBorderWidth - 22) / 8 }
-            : { pl: 0 })
+            ? { width: 22 }
+            : {
+                width: '100%',
+                '&:before': { top: 7, transform: 'none', width: theme.spacing(4) },
+                '& .MuiDivider-wrapper': { px: 4, fontSize: '0.75rem', letterSpacing: '0.21px' }
+              })
         }}
       >
-        <Divider
-          textAlign='left'
-          sx={{
-            m: 0,
-            lineHeight: 'normal',
-            ...conditionalBorderColor(),
-            '&:after': { display: 'none' },
-            ...(navCollapsed && !navHover
-              ? { width: 22 }
-              : {
-                  width: '100%',
-                  '&:before': { top: 7, transform: 'none', width: theme.spacing(4) },
-                  '& .MuiDivider-wrapper': { px: 4, fontSize: '0.75rem', letterSpacing: '0.21px' }
-                })
-          }}
-        >
-          {navCollapsed && !navHover ? null : (
-            <Typography noWrap variant='caption' sx={{ ...conditionalColor() }}>
-              <Translations text={item.sectionTitle} />
-            </Typography>
-          )}
-        </Divider>
-      </ListSubheader>
-    </CanViewNavSectionTitle>
+        {navCollapsed && !navHover ? null : (
+          <Typography noWrap variant='caption' sx={{ ...conditionalColor() }}>
+            <Translations text={item.sectionTitle} />
+          </Typography>
+        )}
+      </Divider>
+    </ListSubheader>
   )
 }
 

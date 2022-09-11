@@ -1,4 +1,3 @@
-// ** MUI Imports
 import Card from '@mui/material/Card'
 import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
@@ -38,8 +37,7 @@ const AnalyticsSalesCountry = () => {
         borderRadius: 8,
         barHeight: '60%',
         horizontal: true,
-        distributed: true,
-        startingShape: 'rounded'
+        distributed: true
       }
     },
     grid: {

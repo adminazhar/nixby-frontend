@@ -8,16 +8,14 @@ const EmployeelistFun = () => {
   const getMobileDetails = () => {
     fetch('https://admin.nixby.in/MobileMaster/MobileFetch.php?fetchmobile=Samsung%20Galaxy%20S22')
       .then(res => res.json())
-      .then(
-        result => {
-          setMobileDetails(result)
-        },
-        error => {
-          setMobileDetails(null)
-        }
-      )
+      .then(result => {
+        setMobileDetails(result)
+      })
   }
-  if (!mobileDetails) return <div>No Record Found</div>
-  return <div>{mobileDetails.modelname}</div>
+  if (!mobileDetails) {
+    return <div>No Record Found</div>
+  } else {
+    return <div>{mobileDetails}</div>
+  }
 }
 export default EmployeelistFun

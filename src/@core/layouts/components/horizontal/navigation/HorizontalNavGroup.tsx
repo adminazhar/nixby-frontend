@@ -171,105 +171,107 @@ const HorizontalNavGroup = (props: Props) => {
   }
 
   return (
-    <MainWrapper {...(WrapperCondition ? { onClickAway: handleGroupClose } : { onMouseLeave: handleGroupClose })}>
-      <ChildWrapper>
-        <List component='div' sx={{ py: skin === 'bordered' ? 2.625 : 2.75 }}>
-          <ListItem
-            aria-haspopup='true'
-            {...(WrapperCondition ? {} : { onMouseEnter: handleGroupOpen })}
-            className={clsx('menu-group', { 'Mui-selected': hasActiveChild(item, currentURL) })}
-            {...(horizontalMenuToggle === 'click' ? { onClick: handleMenuToggleOnClick } : {})}
-            sx={{
-              ...(menuOpen ? { backgroundColor: theme.palette.action.hover } : {}),
-              ...(!hasParent
-                ? {
-                    borderRadius: '8px',
-                    '&.Mui-selected': {
-                      backgroundColor: theme.palette.primary.main,
-                      '& .MuiTypography-root, & .MuiListItemIcon-root, & .MuiSvgIcon-root': {
-                        color: 'common.white'
+    <>
+      <MainWrapper onClickAway={handleGroupClose}>
+        <ChildWrapper>
+          <List component='div' sx={{ py: skin === 'bordered' ? 2.625 : 2.75 }}>
+            <ListItem
+              aria-haspopup='true'
+              {...(WrapperCondition ? {} : { onMouseEnter: handleGroupOpen })}
+              className={clsx('menu-group', { 'Mui-selected': hasActiveChild(item, currentURL) })}
+              {...(horizontalMenuToggle === 'click' ? { onClick: handleMenuToggleOnClick } : {})}
+              sx={{
+                ...(menuOpen ? { backgroundColor: theme.palette.action.hover } : {}),
+                ...(!hasParent
+                  ? {
+                      borderRadius: '8px',
+                      '&.Mui-selected': {
+                        backgroundColor: theme.palette.primary.main,
+                        '& .MuiTypography-root, & .MuiListItemIcon-root, & .MuiSvgIcon-root': {
+                          color: 'common.white'
+                        }
                       }
                     }
-                  }
-                : {})
-            }}
-          >
-            <Box
-              sx={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between'
+                  : {})
               }}
-              ref={setReferenceElement}
             >
               <Box
                 sx={{
+                  width: '100%',
                   display: 'flex',
-                  alignItems: 'center',
                   flexDirection: 'row',
-                  ...(menuTextTruncate && { overflow: 'hidden' })
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
                 }}
+                ref={setReferenceElement}
               >
-                <ListItemIcon sx={{ mr: hasParent ? 3 : 2.5, color: 'text.primary' }}>
-                  <UserIcon
-                    icon={IconTag}
-                    componentType='horizontal-menu'
-                    iconProps={{ sx: IconTag === navSubItemIcon ? { fontSize: '0.5rem' } : {} }}
-                  />
-                </ListItemIcon>
-                <Typography {...(menuTextTruncate && { noWrap: true })}>
-                  <Translations text={item.title} />
-                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    ...(menuTextTruncate && { overflow: 'hidden' })
+                  }}
+                >
+                  <ListItemIcon sx={{ mr: hasParent ? 3 : 2.5, color: 'text.primary' }}>
+                    <UserIcon
+                      icon={IconTag}
+                      componentType='horizontal-menu'
+                      iconProps={{ sx: IconTag === navSubItemIcon ? { fontSize: '0.5rem' } : {} }}
+                    />
+                  </ListItemIcon>
+                  <Typography {...(menuTextTruncate && { noWrap: true })}>
+                    <Translations text={item.title} />
+                  </Typography>
+                </Box>
+                <Box sx={{ ml: 1.5, display: 'flex', alignItems: 'center' }}>
+                  {item.badgeContent ? (
+                    <Chip
+                      size='small'
+                      label={item.badgeContent}
+                      color={item.badgeColor || 'primary'}
+                      sx={{ mr: 0.75, '& .MuiChip-label': { px: 2.5, lineHeight: 1.385, textTransform: 'capitalize' } }}
+                    />
+                  ) : null}
+                  {hasParent ? (
+                    <ToggleIcon sx={{ color: 'text.secondary' }} />
+                  ) : (
+                    <ChevronDown sx={{ color: 'text.secondary' }} />
+                  )}
+                </Box>
               </Box>
-              <Box sx={{ ml: 1.5, display: 'flex', alignItems: 'center' }}>
-                {item.badgeContent ? (
-                  <Chip
-                    size='small'
-                    label={item.badgeContent}
-                    color={item.badgeColor || 'primary'}
-                    sx={{ mr: 0.75, '& .MuiChip-label': { px: 2.5, lineHeight: 1.385, textTransform: 'capitalize' } }}
-                  />
-                ) : null}
-                {hasParent ? (
-                  <ToggleIcon sx={{ color: 'text.secondary' }} />
-                ) : (
-                  <ChevronDown sx={{ color: 'text.secondary' }} />
-                )}
-              </Box>
-            </Box>
-          </ListItem>
-          <AnimationWrapper {...(horizontalMenuAnimation && { in: menuOpen, timeout: { exit: 300, enter: 400 } })}>
-            <Box
-              style={styles.popper}
-              ref={setPopperElement}
-              {...attributes.popper}
-              sx={{
-                zIndex: theme.zIndex.appBar,
-                ...(!horizontalMenuAnimation && { display: menuOpen ? 'block' : 'none' }),
-                pl: childMenuGroupStyles() === 'left' ? (skin === 'bordered' ? 1.5 : 1.25) : 0,
-                pr: childMenuGroupStyles() === 'right' ? (skin === 'bordered' ? 1.5 : 1.25) : 0,
-                ...(hasParent ? { position: 'fixed !important' } : { pt: skin === 'bordered' ? 5.25 : 5.5 })
-              }}
-            >
-              <NavigationMenu
+            </ListItem>
+            <AnimationWrapper {...(horizontalMenuAnimation && { in: menuOpen, timeout: { exit: 300, enter: 400 } })}>
+              <Box
+                style={styles.popper}
+                ref={setPopperElement}
+                {...attributes.popper}
                 sx={{
-                  ...(hasParent
-                    ? { overflowX: 'visible', maxHeight: 'calc(100vh - 21rem)' }
-                    : { maxHeight: 'calc(100vh - 13rem)' }),
-                  ...(skin === 'bordered'
-                    ? { boxShadow: theme.shadows[0], border: `1px solid ${theme.palette.divider}` }
-                    : { boxShadow: theme.shadows[4] })
+                  zIndex: theme.zIndex.appBar,
+                  ...(!horizontalMenuAnimation && { display: menuOpen ? 'block' : 'none' }),
+                  pl: childMenuGroupStyles() === 'left' ? (skin === 'bordered' ? 1.5 : 1.25) : 0,
+                  pr: childMenuGroupStyles() === 'right' ? (skin === 'bordered' ? 1.5 : 1.25) : 0,
+                  ...(hasParent ? { position: 'fixed !important' } : { pt: skin === 'bordered' ? 5.25 : 5.5 })
                 }}
               >
-                <HorizontalNavItems {...props} hasParent horizontalNavItems={item.children} />
-              </NavigationMenu>
-            </Box>
-          </AnimationWrapper>
-        </List>
-      </ChildWrapper>
-    </MainWrapper>
+                <NavigationMenu
+                  sx={{
+                    ...(hasParent
+                      ? { overflowX: 'visible', maxHeight: 'calc(100vh - 21rem)' }
+                      : { maxHeight: 'calc(100vh - 13rem)' }),
+                    ...(skin === 'bordered'
+                      ? { boxShadow: theme.shadows[0], border: `1px solid ${theme.palette.divider}` }
+                      : { boxShadow: theme.shadows[4] })
+                  }}
+                >
+                  <HorizontalNavItems {...props} hasParent horizontalNavItems={item.children} />
+                </NavigationMenu>
+              </Box>
+            </AnimationWrapper>
+          </List>
+        </ChildWrapper>
+      </MainWrapper>
+    </>
   )
 }
 

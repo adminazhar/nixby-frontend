@@ -1,6 +1,3 @@
-// ** React Imports
-import { ReactNode } from 'react'
-
 // ** Next Imports
 import Head from 'next/head'
 import { Router } from 'next/router'

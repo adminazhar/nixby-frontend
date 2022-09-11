@@ -80,7 +80,6 @@ const UserDropdown = (props: Props) => {
   }
 
   const handleLogout = () => {
-    logout()
     handleDropdownClose()
   }
 
