@@ -54,9 +54,7 @@ const AnalyticsWeeklySales = () => {
     plotOptions: {
       bar: {
         borderRadius: 8,
-        columnWidth: '57%',
-        endingShape: 'flat',
-        startingShape: 'rounded'
+        columnWidth: '57%'
       }
     },
     markers: {
