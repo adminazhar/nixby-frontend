@@ -41,9 +41,7 @@ const CrmTotalProfit = () => {
     plotOptions: {
       bar: {
         borderRadius: 4,
-        columnWidth: '21%',
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        columnWidth: '21%'
       }
     },
     grid: {
