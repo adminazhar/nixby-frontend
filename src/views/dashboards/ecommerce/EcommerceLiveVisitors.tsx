@@ -50,9 +50,7 @@ const EcommerceLiveVisitors = () => {
     plotOptions: {
       bar: {
         borderRadius: 6,
-        columnWidth: '43%',
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        columnWidth: '43%'
       }
     },
     states: {
