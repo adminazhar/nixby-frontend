@@ -94,9 +94,7 @@ const CrmProjectTimeline = () => {
         barHeight: '60%',
         horizontal: true,
         borderRadius: 15,
-        distributed: true,
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        distributed: true
       }
     },
     stroke: {
