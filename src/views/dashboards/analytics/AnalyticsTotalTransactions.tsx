@@ -59,9 +59,7 @@ const AnalyticsTotalTransactions = () => {
       bar: {
         borderRadius: 5,
         barHeight: '30%',
-        horizontal: true,
-        endingShape: 'flat',
-        startingShape: 'rounded'
+        horizontal: true
       }
     },
     tooltip: {
