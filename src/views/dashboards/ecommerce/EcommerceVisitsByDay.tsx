@@ -34,9 +34,7 @@ const EcommerceVisitsByDay = () => {
       bar: {
         borderRadius: 8,
         distributed: true,
-        columnWidth: '55%',
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        columnWidth: '55%'
       }
     },
     legend: { show: false },
