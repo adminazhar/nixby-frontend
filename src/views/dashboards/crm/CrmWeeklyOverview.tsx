@@ -48,8 +48,6 @@ const CrmWeeklyOverview = () => {
       bar: {
         borderRadius: 8,
         columnWidth: '35%',
-        endingShape: 'rounded',
-        startingShape: 'rounded',
         colors: {
           ranges: [
             {
