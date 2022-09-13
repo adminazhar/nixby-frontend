@@ -82,9 +82,7 @@ const CrmExternalLinks = () => {
     plotOptions: {
       bar: {
         borderRadius: 10,
-        columnWidth: '41%',
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        columnWidth: '41%'
       }
     },
     xaxis: {
