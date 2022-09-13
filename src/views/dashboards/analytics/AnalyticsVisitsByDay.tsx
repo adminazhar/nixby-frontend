@@ -34,9 +34,7 @@ const AnalyticsVisitsByDay = () => {
       bar: {
         borderRadius: 8,
         distributed: true,
-        columnWidth: '51%',
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        columnWidth: '51%'
       }
     },
     legend: { show: false },
