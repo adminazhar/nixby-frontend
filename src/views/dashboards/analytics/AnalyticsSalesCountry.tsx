@@ -7,82 +7,9 @@ import CardContent from '@mui/material/CardContent'
 // ** Icons Imports
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 
-// ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
-
-// ** Custom Components Imports
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
-
-// ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
-
-const series = [
-  {
-    name: 'Sales',
-    data: [17165, 13850, 12375, 9567, 7880]
-  }
-]
-
 const AnalyticsSalesCountry = () => {
   // ** Hook
   const theme = useTheme()
-
-  const options: ApexOptions = {
-    chart: {
-      parentHeightOffset: 0,
-      toolbar: { show: false }
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 8,
-        barHeight: '60%',
-        horizontal: true,
-        distributed: true
-      }
-    },
-    grid: {
-      strokeDashArray: 8,
-      xaxis: {
-        lines: { show: true }
-      },
-      yaxis: {
-        lines: { show: false }
-      },
-      padding: {
-        top: -18,
-        left: 26,
-        right: 50,
-        bottom: 6
-      }
-    },
-    colors: [
-      hexToRGBA(theme.palette.primary.light, 1),
-      hexToRGBA(theme.palette.success.light, 1),
-      hexToRGBA(theme.palette.warning.light, 1),
-      hexToRGBA(theme.palette.info.light, 1),
-      hexToRGBA(theme.palette.error.light, 1)
-    ],
-    legend: { show: false },
-    states: {
-      hover: {
-        filter: { type: 'none' }
-      },
-      active: {
-        filter: { type: 'none' }
-      }
-    },
-    xaxis: {
-      axisTicks: { show: false },
-      axisBorder: { show: false },
-      categories: ['US', 'IN', 'JA', 'CA', 'AU'],
-      labels: {
-        formatter: val => `${Number(val) / 1000}k`
-      }
-    },
-    yaxis: {
-      labels: { align: theme.direction === 'rtl' ? 'right' : 'left' }
-    }
-  }
 
   return (
     <Card>
@@ -109,7 +36,6 @@ const AnalyticsSalesCountry = () => {
           }
         }}
       >
-        <ReactApexcharts type='bar' height={332} series={series} options={options} />
       </CardContent>
     </Card>
   )

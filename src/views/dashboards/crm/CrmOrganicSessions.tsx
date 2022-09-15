@@ -11,69 +11,12 @@ import CardContent from '@mui/material/CardContent'
 import Circle from 'mdi-material-ui/Circle'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 
-// ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
-
-// ** Custom Components Imports
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
-
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
 const CrmOrganicSessions = () => {
   // ** Hook
   const theme = useTheme()
-
-  const options: ApexOptions = {
-    chart: {
-      sparkline: { enabled: true }
-    },
-    colors: [
-      theme.palette.warning.main,
-      hexToRGBA(theme.palette.warning.main, 0.8),
-      hexToRGBA(theme.palette.warning.main, 0.6),
-      hexToRGBA(theme.palette.warning.main, 0.4),
-      hexToRGBA(theme.palette.warning.main, 0.2)
-    ],
-    legend: { show: false },
-    tooltip: { enabled: false },
-    dataLabels: { enabled: false },
-    stroke: { width: 3, lineCap: 'round', colors: [theme.palette.background.paper] },
-    labels: ['USA', 'India', 'Canada', 'Japan', 'France'],
-    states: {
-      hover: {
-        filter: { type: 'none' }
-      },
-      active: {
-        filter: { type: 'none' }
-      }
-    },
-    plotOptions: {
-      pie: {
-        endAngle: 130,
-        startAngle: -130,
-        customScale: 0.9,
-        donut: {
-          size: '83%',
-          labels: {
-            show: true,
-            name: {
-              offsetY: 25
-            },
-            value: {
-              offsetY: -15,
-              formatter: value => `${value}k`
-            },
-            total: {
-              show: true,
-              label: '2022',
-              formatter: value => `${value.globals.seriesTotals.reduce((total: number, num: number) => total + num)}k`
-            }
-          }
-        }
-      }
-    }
-  }
 
   return (
     <Card>
@@ -94,7 +37,6 @@ const CrmOrganicSessions = () => {
           }
         }}
       >
-        <ReactApexcharts type='donut' height={237} options={options} series={[13, 18, 18, 24, 16]} />
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
           <Box sx={{ mx: 3, display: 'flex', alignItems: 'center' }}>
             <Circle sx={{ mr: 1.25, fontSize: '0.75rem', color: 'warning.main' }} />

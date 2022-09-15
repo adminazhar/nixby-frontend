@@ -1,51 +1,10 @@
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
-
-// ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
-
 const AnalyticsOverview = () => {
-  // ** Hook
-  const theme = useTheme()
-
-  const options: ApexOptions = {
-    chart: {
-      sparkline: { enabled: true }
-    },
-    stroke: { lineCap: 'round' },
-    colors: [hexToRGBA(theme.palette.primary.main, 1)],
-    plotOptions: {
-      radialBar: {
-        hollow: { size: '55%' },
-        dataLabels: {
-          name: { show: false },
-          value: {
-            offsetY: 5
-          }
-        }
-      }
-    },
-    grid: {
-      padding: {
-        bottom: -12
-      }
-    },
-    states: {
-      hover: {
-        filter: { type: 'none' }
-      },
-      active: {
-        filter: { type: 'none' }
-      }
-    }
-  }
 
   return (
     <Card>

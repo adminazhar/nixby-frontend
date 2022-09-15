@@ -14,26 +14,8 @@ import TrendingUp from 'mdi-material-ui/TrendingUp'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import TrendingDown from 'mdi-material-ui/TrendingDown'
 
-// ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
-
 // ** Custom Components Imports
 import CustomAvatar from 'src/@core/components/mui/avatar'
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
-
-// ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
-
-const series = [
-  {
-    name: 'Last Week',
-    data: [83, 153, 213, 279, 213, 153, 83]
-  },
-  {
-    name: 'This Week',
-    data: [-84, -156, -216, -282, -216, -156, -84]
-  }
-]
 
 // Styled Grid component
 const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
@@ -49,59 +31,6 @@ const AnalyticsTotalTransactions = () => {
   // ** Hook
   const theme = useTheme()
 
-  const options: ApexOptions = {
-    chart: {
-      stacked: true,
-      parentHeightOffset: 0,
-      toolbar: { show: false }
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 5,
-        barHeight: '30%',
-        horizontal: true
-      }
-    },
-    tooltip: {
-      y: {
-        formatter: val => `${Math.abs(val)}`
-      }
-    },
-    xaxis: {
-      position: 'top',
-      axisTicks: { show: false },
-      axisBorder: { show: false },
-      labels: { formatter: val => `${Math.abs(Number(val))}` },
-      categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yaxis: {
-      labels: { show: false }
-    },
-    colors: [hexToRGBA(theme.palette.primary.main, 1), hexToRGBA(theme.palette.success.main, 1)],
-    grid: {
-      xaxis: {
-        lines: { show: true }
-      },
-      yaxis: {
-        lines: { show: false }
-      },
-      padding: {
-        top: 5,
-        bottom: -25
-      }
-    },
-    legend: { show: false },
-    dataLabels: { enabled: false },
-    states: {
-      hover: {
-        filter: { type: 'none' }
-      },
-      active: {
-        filter: { type: 'none' }
-      }
-    }
-  }
-
   return (
     <Card>
       <Grid container>
@@ -115,7 +44,7 @@ const AnalyticsTotalTransactions = () => {
               }
             }}
           >
-            <ReactApexcharts type='bar' height={278} series={series} options={options} />
+           
           </CardContent>
         </StyledGrid>
         <Grid item xs={12} sm={5}>

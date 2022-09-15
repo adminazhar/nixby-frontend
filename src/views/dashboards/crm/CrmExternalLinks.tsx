@@ -12,7 +12,6 @@ import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
 import TableContainer from '@mui/material/TableContainer'
 
 // ** Icons Imports
@@ -21,17 +20,8 @@ import ChevronUp from 'mdi-material-ui/ChevronUp'
 import ChevronDown from 'mdi-material-ui/ChevronDown'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 
-// ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
-
 // ** Type Import
 import { ThemeColor } from 'src/@core/layouts/types'
-
-// ** Custom Components Imports
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
-
-// ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
 interface DataType {
   title: string
@@ -58,109 +48,9 @@ const data: DataType[] = [
   }
 ]
 
-const series = [
-  {
-    name: 'Google Analytics',
-    data: [155, 135, 320, 100, 150, 335, 160]
-  },
-  {
-    name: 'Facebook Ads',
-    data: [110, 235, 125, 230, 215, 115, 200]
-  }
-]
-
 const CrmExternalLinks = () => {
   // ** Hook
   const theme = useTheme()
-
-  const options: ApexOptions = {
-    chart: {
-      stacked: true,
-      parentHeightOffset: 0,
-      toolbar: { show: false }
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 10,
-        columnWidth: '41%'
-      }
-    },
-    xaxis: {
-      labels: { show: false },
-      axisTicks: { show: false },
-      axisBorder: { show: false },
-      categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yaxis: { show: false },
-    colors: [hexToRGBA(theme.palette.primary.main, 1), hexToRGBA(theme.palette.secondary.main, 1)],
-    grid: {
-      strokeDashArray: 10,
-      padding: {
-        top: 0,
-        left: -4,
-        right: -5,
-        bottom: -14
-      }
-    },
-    legend: { show: false },
-    dataLabels: { enabled: false },
-    stroke: {
-      width: 6,
-      curve: 'smooth',
-      lineCap: 'round',
-      colors: [theme.palette.background.paper]
-    },
-    states: {
-      hover: {
-        filter: { type: 'none' }
-      },
-      active: {
-        filter: { type: 'none' }
-      }
-    },
-    responsive: [
-      {
-        breakpoint: theme.breakpoints.values.xl,
-        options: {
-          plotOptions: {
-            bar: {
-              columnWidth: '50%'
-            }
-          }
-        }
-      },
-      {
-        breakpoint: theme.breakpoints.values.lg,
-        options: {
-          plotOptions: {
-            bar: {
-              columnWidth: '50%'
-            }
-          }
-        }
-      },
-      {
-        breakpoint: theme.breakpoints.values.sm,
-        options: {
-          plotOptions: {
-            bar: {
-              columnWidth: '35%'
-            }
-          }
-        }
-      },
-      {
-        breakpoint: 430,
-        options: {
-          plotOptions: {
-            bar: {
-              columnWidth: '45%'
-            }
-          }
-        }
-      }
-    ]
-  }
 
   return (
     <Card>
@@ -172,9 +62,6 @@ const CrmExternalLinks = () => {
           </IconButton>
         }
       />
-      <CardContent sx={{ '& .apexcharts-xcrosshairs.apexcharts-active': { opacity: 0 } }}>
-        <ReactApexcharts type='bar' height={287} series={series} options={options} />
-      </CardContent>
       <TableContainer sx={{ mb: 3.75 }}>
         <Table>
           <TableBody>

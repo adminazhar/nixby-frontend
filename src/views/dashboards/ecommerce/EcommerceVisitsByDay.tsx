@@ -11,66 +11,12 @@ import CardContent from '@mui/material/CardContent'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import ChevronRight from 'mdi-material-ui/ChevronRight'
 
-// ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
-
 // ** Custom Components Imports
 import CustomAvatar from 'src/@core/components/mui/avatar'
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
-
-// ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
 const EcommerceVisitsByDay = () => {
   // ** Hook
   const theme = useTheme()
-
-  const options: ApexOptions = {
-    chart: {
-      parentHeightOffset: 0,
-      toolbar: { show: false }
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 8,
-        distributed: true,
-        columnWidth: '55%'
-      }
-    },
-    legend: { show: false },
-    dataLabels: { enabled: false },
-    colors: [
-      hexToRGBA(theme.palette.primary.main, 0.1),
-      hexToRGBA(theme.palette.primary.main, 1),
-      hexToRGBA(theme.palette.primary.main, 0.1),
-      hexToRGBA(theme.palette.primary.main, 1),
-      hexToRGBA(theme.palette.primary.main, 1),
-      hexToRGBA(theme.palette.primary.main, 0.1),
-      hexToRGBA(theme.palette.primary.main, 0.1)
-    ],
-    states: {
-      hover: {
-        filter: { type: 'none' }
-      },
-      active: {
-        filter: { type: 'none' }
-      }
-    },
-    xaxis: {
-      axisTicks: { show: false },
-      axisBorder: { show: false },
-      categories: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-    },
-    yaxis: { show: false },
-    grid: {
-      show: false,
-      padding: {
-        top: -15,
-        left: -7,
-        right: -4
-      }
-    }
-  }
 
   return (
     <Card>
@@ -86,7 +32,6 @@ const EcommerceVisitsByDay = () => {
         }
       />
       <CardContent sx={{ '& .apexcharts-canvas .apexcharts-text': { fill: theme.palette.text.secondary } }}>
-        <ReactApexcharts type='bar' height={225} options={options} series={[{ data: [38, 55, 48, 65, 80, 38, 48] }]} />
         <Box sx={{ mt: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Typography sx={{ mb: 0.75, fontWeight: 600 }}>Most Visited Day</Typography>

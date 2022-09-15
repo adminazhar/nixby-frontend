@@ -15,15 +15,8 @@ import PencilRuler from 'mdi-material-ui/PencilRuler'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import CreditCardOutline from 'mdi-material-ui/CreditCardOutline'
 
-// ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
-
 // ** Custom Components Imports
 import CustomAvatar from 'src/@core/components/mui/avatar'
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
-
-// ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
 // Styled Grid component
 const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
@@ -35,122 +28,10 @@ const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
   }
 }))
 
-const labels = ['Development Apps', 'UI Design', 'IOS Application', 'Web App Wireframing', 'Prototyping']
-
-const series = [
-  {
-    data: [
-      {
-        x: 'Catherine',
-        y: [
-          new Date(`${new Date().getFullYear()}-01-01`).getTime(),
-          new Date(`${new Date().getFullYear()}-04-02`).getTime()
-        ]
-      },
-      {
-        x: 'Janelle',
-        y: [
-          new Date(`${new Date().getFullYear()}-02-18`).getTime(),
-          new Date(`${new Date().getFullYear()}-05-30`).getTime()
-        ]
-      },
-      {
-        x: 'Wellington',
-        y: [
-          new Date(`${new Date().getFullYear()}-02-07`).getTime(),
-          new Date(`${new Date().getFullYear()}-04-31`).getTime()
-        ]
-      },
-      {
-        x: 'Blake',
-        y: [
-          new Date(`${new Date().getFullYear()}-01-14`).getTime(),
-          new Date(`${new Date().getFullYear()}-06-30`).getTime()
-        ]
-      },
-      {
-        x: 'Quinn',
-        y: [
-          new Date(`${new Date().getFullYear()}-04-01`).getTime(),
-          new Date(`${new Date().getFullYear()}-07-31`).getTime()
-        ]
-      }
-    ]
-  }
-]
 
 const CrmProjectTimeline = () => {
   // ** Hook
   const theme = useTheme()
-
-  const options: ApexOptions = {
-    chart: {
-      parentHeightOffset: 0,
-      toolbar: { show: false }
-    },
-    tooltip: { enabled: false },
-    plotOptions: {
-      bar: {
-        barHeight: '60%',
-        horizontal: true,
-        borderRadius: 15,
-        distributed: true
-      }
-    },
-    stroke: {
-      width: 2,
-      colors: [theme.palette.background.paper]
-    },
-    colors: [
-      hexToRGBA(theme.palette.primary.main, 1),
-      hexToRGBA(theme.palette.success.main, 1),
-      hexToRGBA(theme.palette.secondary.main, 1),
-      hexToRGBA(theme.palette.info.main, 1),
-      hexToRGBA(theme.palette.warning.main, 1)
-    ],
-    dataLabels: {
-      enabled: true,
-      formatter: (val, opts) => labels[opts.dataPointIndex]
-    },
-    states: {
-      hover: {
-        filter: { type: 'none' }
-      },
-      active: {
-        filter: { type: 'none' }
-      }
-    },
-    legend: { show: false },
-    grid: {
-      strokeDashArray: 6,
-      xaxis: {
-        lines: { show: true }
-      },
-      yaxis: {
-        lines: { show: false }
-      },
-      padding: {
-        top: -22,
-        left: 34,
-        right: 18,
-        bottom: 4
-      }
-    },
-    xaxis: {
-      type: 'datetime',
-      axisTicks: { show: false },
-      axisBorder: { show: false },
-      labels: {
-        datetimeFormatter: {
-          year: 'MMM',
-          month: 'MMM'
-        }
-      }
-    },
-    yaxis: {
-      labels: { show: true, align: theme.direction === 'rtl' ? 'right' : 'left' }
-    }
-  }
 
   return (
     <Card>
@@ -171,7 +52,6 @@ const CrmProjectTimeline = () => {
               }
             }}
           >
-            <ReactApexcharts height={272} type='rangeBar' series={series} options={options} />
           </Box>
         </StyledGrid>
         <Grid item xs={12} sm={4}>
