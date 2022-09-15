@@ -9,9 +9,6 @@ import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
 // ** Custom Component Import
 import CardStatisticsVertical from 'src/@core/components/card-statistics/card-stats-vertical'
 
-// ** Styled Component Import
-import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
-
 // ** Demo Components Imports
 import AnalyticsSessions from 'src/views/dashboards/analytics/AnalyticsSessions'
 import AnalyticsOverview from 'src/views/dashboards/analytics/AnalyticsOverview'
@@ -28,7 +25,6 @@ import AnalyticsTopReferralSources from 'src/views/dashboards/analytics/Analytic
 
 const AnalyticsDashboard = () => {
   return (
-    <ApexChartWrapper>
       <Grid container spacing={6} className='match-height'>
         <Grid item xs={12} md={8}>
           <AnalyticsCongratulations />
@@ -101,7 +97,6 @@ const AnalyticsDashboard = () => {
           <AnalyticsActivityTimeline />
         </Grid>
       </Grid>
-    </ApexChartWrapper>
   )
 }
 
