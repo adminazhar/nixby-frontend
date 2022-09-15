@@ -6,7 +6,6 @@ import CardStatisticsCharacter from 'src/@core/components/card-statistics/card-s
 
 // ** Styled Component Import
 import KeenSliderWrapper from 'src/@core/styles/libs/keen-slider'
-import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
 // ** Demo Components Imports
 import EcommerceTable from 'src/views/dashboards/ecommerce/EcommerceTable'
@@ -23,7 +22,6 @@ import EcommerceSalesOverviewWithTabs from 'src/views/dashboards/ecommerce/Ecomm
 
 const EcommerceDashboard = () => {
   return (
-    <ApexChartWrapper>
       <KeenSliderWrapper>
         <Grid container spacing={6} className='match-height'>
           <Grid item xs={12} md={6}>
@@ -86,7 +84,6 @@ const EcommerceDashboard = () => {
           </Grid>
         </Grid>
       </KeenSliderWrapper>
-    </ApexChartWrapper>
   )
 }
 
