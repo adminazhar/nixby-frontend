@@ -8,9 +8,6 @@ import CardContent from '@mui/material/CardContent'
 // ** Third Party Imports
 import { ApexOptions } from 'apexcharts'
 
-// ** Custom Components Imports
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
-
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
@@ -62,7 +59,6 @@ const AnalyticsOverview = () => {
           </Typography>
         </Box>
         <Typography variant='body2'>Overview</Typography>
-        <ReactApexcharts type='radialBar' height={119} series={[64]} options={options} />
       </CardContent>
     </Card>
   )
