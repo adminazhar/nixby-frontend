@@ -1,0 +1,16 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/401": "pages/401.html",
+  "/404": "pages/404.html",
+  "/500": "pages/500.html",
+  "/crypto": "pages/crypto.html",
+  "/dashboards/analytics": "pages/dashboards/analytics.html",
+  "/dashboards/crm": "pages/dashboards/crm.html",
+  "/": "pages/index.html",
+  "/mobile": "pages/mobile.html",
+  "/second-page": "pages/second-page.html",
+  "/dashboards/ecommerce": "pages/dashboards/ecommerce.html",
+  "/home": "pages/home.html"
+}
