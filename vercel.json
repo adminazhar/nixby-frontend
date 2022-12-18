@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/nixby/:asset*", "destination": "https://nixby.vercel.app/:asset*" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
